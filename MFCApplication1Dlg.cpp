@@ -148,7 +148,7 @@ void CMFCApplication1Dlg::OnPaint()
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
-	{
+	{//
 		CDialogEx::OnPaint();
 	}
 }
