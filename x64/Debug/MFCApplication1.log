@@ -1,2 +1,7 @@
-﻿  duoJiFanKui.cpp
-  MFCApplication1.vcxproj -> C:\Users\Natsu\source\repos\MFCApplication1\x64\Debug\MFCApplication1.exe
+﻿  Dlg1.cpp
+C:\Users\Natsu\source\repos\MFCApplication1\MFCApplication1\Dlg1.cpp(78,7): error C2248: “duoJiFanKui::CreateNewProcess”: 无法访问 private 成员(在“duoJiFanKui”类中声明)
+  duoJiFanKui.cpp
+C:\Users\Natsu\source\repos\MFCApplication1\MFCApplication1\duoJiFanKui.cpp(8,29): error C2039: "string": 不是 "std" 的成员
+C:\Users\Natsu\source\repos\MFCApplication1\MFCApplication1\duoJiFanKui.cpp(8,29): error C2061: 语法错误: 标识符“string”
+  MFCApplication1Dlg.cpp
+  正在生成代码...

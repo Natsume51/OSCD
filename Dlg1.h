@@ -34,7 +34,6 @@ public:
 	afx_msg void OnEnChangeEdit1();
 	CEdit m_edit1;
 	CEdit m_edit2;
+	void AddNewItem();
 	afx_msg void OnLvnItemchangedList5(NMHDR* pNMHDR, LRESULT* pResult);
-	void ProgressStep(int n);
-	CProgressCtrl m_ProCtrl;
 };
