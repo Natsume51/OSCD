@@ -1,11 +1,12 @@
 #include <iostream>
 #include "pch.h"
+#include <string>
 using namespace std;
 
 class duoJiFanKui
 {
 public:
-	void CreateNewProcess(std::string name, int time)
+	void CreateNewProcess(string name,int time)
 	{
 		;
 		//TODO

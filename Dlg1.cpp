@@ -29,6 +29,7 @@ void Dlg1::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST5, m_list3);
 	DDX_Control(pDX, IDC_EDIT1, m_edit1);
 	DDX_Control(pDX, IDC_EDIT2, m_edit2);
+	DDX_Control(pDX, IDC_PROGRESS1, m_ProCtrl);
 }
 
 
@@ -66,16 +67,20 @@ BOOL Dlg1::OnInitDialog()
 	m_list3.SetExtendedStyle(dwStyle);
 	m_list3.InsertColumn(0, "进程名", LVCFMT_LEFT, 100);
 	m_list3.InsertColumn(1, "剩余时间", LVCFMT_LEFT, 100);
+	m_ProCtrl.SetRange(0, 100);
+
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
 
+void Dlg1::ProgressStep(int n)
+{
+	m_ProCtrl.OffsetPos(n);
+}
 
 void Dlg1::OnBnClickedButton1()
 {
-	duoJiFanKui djfk;
 	// TODO: 在此添加控件通知处理程序代码
-	djfk.CreateNewProcess(pName,pTime);
 
 }
 
@@ -115,3 +120,5 @@ void Dlg1::OnLvnItemchangedList5(NMHDR* pNMHDR, LRESULT* pResult)
 	// TODO: 在此添加控件通知处理程序代码
 	*pResult = 0;
 }
+
+
