@@ -28,6 +28,7 @@ public:
 	std::string pName;
 	int pTime;
 	
+
 	virtual BOOL OnInitDialog();
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnEnChangeEdit2();
@@ -36,5 +37,7 @@ public:
 	CEdit m_edit2;
 	afx_msg void OnLvnItemchangedList5(NMHDR* pNMHDR, LRESULT* pResult);
 	void ProgressStep(int n);
+	void TotalProgressStep(int n);
 	CProgressCtrl m_ProCtrl;
+	CProgressCtrl m_TotalProCtrl;
 };
