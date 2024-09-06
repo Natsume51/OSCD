@@ -1,6 +1,7 @@
 ﻿// Dlg1.cpp: 实现文件
 //
-
+//void Dlg1::ProgressStep(int n)		当前进程进度条前进n%
+//void Dlg1::TotalProgressStep(int n)	总进度条前进n%
 #include "pch.h"
 #include "MFCApplication1.h"
 #include "afxdialogex.h"
@@ -30,6 +31,7 @@ void Dlg1::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT1, m_edit1);
 	DDX_Control(pDX, IDC_EDIT2, m_edit2);
 	DDX_Control(pDX, IDC_PROGRESS1, m_ProCtrl);
+	DDX_Control(pDX, IDC_PROGRESS2, m_TotalProCtrl);
 }
 
 
@@ -77,7 +79,10 @@ void Dlg1::ProgressStep(int n)
 {
 	m_ProCtrl.OffsetPos(n);
 }
-
+void Dlg1::TotalProgressStep(int n)
+{
+	m_TotalProCtrl.OffsetPos(n);
+}
 void Dlg1::OnBnClickedButton1()
 {
 	// TODO: 在此添加控件通知处理程序代码
@@ -120,5 +125,6 @@ void Dlg1::OnLvnItemchangedList5(NMHDR* pNMHDR, LRESULT* pResult)
 	// TODO: 在此添加控件通知处理程序代码
 	*pResult = 0;
 }
+
 
 
