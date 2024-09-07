@@ -2,9 +2,5 @@
   duoJiFanKui.cpp
   process.cpp
   正在生成代码...
-D:\VisualStudioProject\OSCD\duoJiFanKui.cpp(8,7): error C2011: “duoJiFanKui”:“class”类型重定义
-  (编译源文件“/duoJiFanKui.cpp”)
-      D:\VisualStudioProject\OSCD\duoJiFanKui.h(3,7):
-      参见“duoJiFanKui”的声明
-  
-D:\VisualStudioProject\OSCD\process.cpp(24,1): error C1010: 在查找预编译头时遇到意外的文件结尾。是否忘记了向源中添加“#include "pch.h"”?
+  LINK : 没有找到 D:\VisualStudioProject\OSCD\x64\Debug\MFCApplication1.exe 或上一个增量链接没有生成它；正在执行完全链接
+  MFCApplication1.vcxproj -> D:\VisualStudioProject\OSCD\x64\Debug\MFCApplication1.exe

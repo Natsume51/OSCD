@@ -1,23 +1,38 @@
 #include <iostream>
+#include <string>
+#include "pch.h"
 #include "process.h"
 using namespace std;
 //process¿‡ µœ÷
 
-void process::set_process_name(string pname)
-{
-	process_name = pname;
-}
 
-void process::set_process_serve_time(int ptime)
-{
-	serve_time = ptime;
-}
 
 process::process(string pname, int ptime)
 {
 	arrive_time = 0;
-	set_process_name(pname);
-	set_process_serve_time(ptime);
+	process_name = pname;
+	serve_time = ptime;
 	run_time = arrive_time;
 }
 
+process::process(const process& P)
+{
+	arrive_time = P.arrive_time;
+	serve_time = P.serve_time;
+	process_name = P.process_name;
+}
+
+void process_list::push_process(process P)
+{
+	p_list.push_back(P);
+}
+
+int process_list::get_nums() const
+{
+	return (int)p_list.size();
+}
+
+vector<process> process_list::get_list() const
+{
+	return p_list;
+}
