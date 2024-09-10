@@ -10,12 +10,16 @@ public:
 private:
 	//三个队列的时间片
 	int ts1, ts2, ts3;
-	//三个队列
+	//当前时间，初始化为0，在process_running中修改其值
+	int current_time;
+	//三个队列+运行结束的进程队列
 	vector<process> queue_1;
 	vector<process> queue_2;
 	vector<process> queue_3;
+	vector<process> finish_queue;
 	//进程运行函数和调度函数
 	void process_running(int ts, process& current_process);
+	void queue_processing(vector<process>& L1, vector<process>& L2, int ts);
 	void scheduling();
 
 };
