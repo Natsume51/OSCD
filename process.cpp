@@ -13,6 +13,7 @@ process::process(string pname, int ptime)
 	process_name = pname;
 	serve_time = ptime;
 	run_time = arrive_time;
+	finish_time = 0;
 }
 
 process::process(const process& P)
@@ -20,8 +21,41 @@ process::process(const process& P)
 	arrive_time = P.arrive_time;
 	serve_time = P.serve_time;
 	process_name = P.process_name;
+	run_time = P.run_time;
+	finish_time = P.finish_time;
+}
+void process::Modify_Run_Time(int newTime)
+{
+	run_time = newTime;
 }
 
+void process::Modify_Finish_Time(int newTime)
+{
+	finish_time = newTime;
+}
+
+int process::get_arrive_time()
+{
+	return arrive_time;
+}
+int process::get_serve_time()
+{
+	return serve_time;
+}
+int process::get_run_time()
+{
+	return run_time;
+}
+int process::get_finish_time()
+{
+	return finish_time;
+}
+string process::get_process_name()
+{
+	return process_name;
+}
+
+//！！！！！！！！！！！！！！！！！！！！！！
 void process_list::push_process(process P)
 {
 	p_list.push_back(P);

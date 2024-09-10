@@ -1,6 +1,7 @@
 ﻿  Dlg1.cpp
   duoJiFanKui.cpp
   process.cpp
+D:\VisualStudioProject\OSCD\duoJiFanKui.cpp(21,1): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+  (编译源文件“/duoJiFanKui.cpp”)
+  
   正在生成代码...
-  LINK : 没有找到 D:\VisualStudioProject\OSCD\x64\Debug\MFCApplication1.exe 或上一个增量链接没有生成它；正在执行完全链接
-  MFCApplication1.vcxproj -> D:\VisualStudioProject\OSCD\x64\Debug\MFCApplication1.exe
