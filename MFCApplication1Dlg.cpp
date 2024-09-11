@@ -108,6 +108,7 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	m_TabCtrl.InsertItem(2, _T("短作业优先"));
 	m_dlg1.Create(IDD_DIALOG1, &m_TabCtrl);
 	m_dlg2.Create(IDD_DIALOG2, &m_TabCtrl);
+	m_dlg3.Create(IDD_DIALOG3, &m_TabCtrl);
 	m_dlg1.ShowWindow(TRUE);
 	//m_dlg2.ShowWindow(FALSE);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
@@ -173,12 +174,17 @@ void CMFCApplication1Dlg::OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult)
 	case 0:
 		m_dlg1.ShowWindow(TRUE);
 		m_dlg2.ShowWindow(FALSE);
+		m_dlg3.ShowWindow(FALSE);
 		break;
 	case 1:
 		m_dlg2.ShowWindow(TRUE);
 		m_dlg1.ShowWindow(FALSE);
+		m_dlg3.ShowWindow(FALSE);
 		break;
-	
+	case 2:
+		m_dlg1.ShowWindow(FALSE);
+		m_dlg2.ShowWindow(FALSE);
+		m_dlg3.ShowWindow(TRUE);
 	}
 	*pResult = 0;
 }

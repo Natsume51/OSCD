@@ -27,6 +27,7 @@ public:
 	CListCtrl m_list3;
 	std::string pName;
 	int pTime;
+	int pArrTime;
 	
 
 	virtual BOOL OnInitDialog();
@@ -40,4 +41,8 @@ public:
 	void TotalProgressStep(int n);
 	CProgressCtrl m_ProCtrl;
 	CProgressCtrl m_TotalProCtrl;
+	CEdit m_edit3;
+	afx_msg void OnEnChangeEdit3();
+
+	afx_msg void OnBnClickedButton2();
 };

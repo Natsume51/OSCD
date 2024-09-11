@@ -5,6 +5,7 @@
 #pragma once
 #include "Dlg1.h"
 #include "Dlg2.h"
+#include "Dlg3.h"
 
 // CMFCApplication1Dlg 对话框
 class CMFCApplication1Dlg : public CDialogEx
@@ -36,6 +37,7 @@ public:
 	CTabCtrl m_TabCtrl;
 	Dlg1 m_dlg1;
 	Dlg2 m_dlg2;
+	Dlg3 m_dlg3;
 	int cursel=0;
 	afx_msg void OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult);
 };

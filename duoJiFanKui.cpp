@@ -16,8 +16,9 @@ duojifankui::duojifankui(const process_list& L,int time_slice1, int time_slice2,
 
 void duojifankui::process_running(int ts, process& current_process)
 {
+
 	//修改进程数据
-	current_process
+	current_process;
 }
 
 void duojifankui::scheduling()

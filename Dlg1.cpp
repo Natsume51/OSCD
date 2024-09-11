@@ -32,6 +32,7 @@ void Dlg1::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT2, m_edit2);
 	DDX_Control(pDX, IDC_PROGRESS1, m_ProCtrl);
 	DDX_Control(pDX, IDC_PROGRESS2, m_TotalProCtrl);
+	DDX_Control(pDX, IDC_EDIT3, m_edit3);
 }
 
 
@@ -40,6 +41,8 @@ BEGIN_MESSAGE_MAP(Dlg1, CDialogEx)
 	ON_EN_CHANGE(IDC_EDIT2, &Dlg1::OnEnChangeEdit2)
 	ON_EN_CHANGE(IDC_EDIT1, &Dlg1::OnEnChangeEdit1)
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST5, &Dlg1::OnLvnItemchangedList5)
+	ON_EN_CHANGE(IDC_EDIT3, &Dlg1::OnEnChangeEdit3)
+	ON_BN_CLICKED(IDC_BUTTON2, &Dlg1::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 
@@ -128,3 +131,30 @@ void Dlg1::OnLvnItemchangedList5(NMHDR* pNMHDR, LRESULT* pResult)
 
 
 
+
+
+void Dlg1::OnEnChangeEdit3()
+{
+	// TODO:  如果该控件是 RICHEDIT 控件，它将不
+	// 发送此通知，除非重写 CDialogEx::OnInitDialog()
+	// 函数并调用 CRichEditCtrl().SetEventMask()，
+	// 同时将 ENM_CHANGE 标志“或”运算到掩码中。
+
+	// TODO:  在此添加控件通知处理程序代码
+	CString arrTime;
+	m_edit1.GetWindowTextA(arrTime);
+	pArrTime = atoi(arrTime);
+}
+
+
+
+
+void Dlg1::OnBnClickedButton2()
+{
+	// TODO: 在此添加控件通知处理程序代码
+
+}
+
+void UpdateQueue1() {
+
+}

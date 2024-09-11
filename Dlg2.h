@@ -22,12 +22,18 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
+	int pTime;
+	std::string pName;
+	int pArrTime;
+
+
 	virtual BOOL OnInitDialog();
 //	CListCtrl m_ListCtrl1;
 	CListCtrl m_list1;
 	afx_msg void OnEnChangeEdit2();
 	CEdit m_edit2;
 	CEdit m_edit1;
-	int pTime;
-	std::string pName;
+	afx_msg void OnEnChangeEdit1();
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnEnChangeEdit3();
 };
