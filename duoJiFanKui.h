@@ -1,7 +1,21 @@
+#pragma once
 #include <iostream>
-
-class duoJiFanKui
+#include "process.h"
+using namespace std;
+class duojifankui
 {
-	duoJiFanKui();
-	void CreateNewProcess(std::string name,int time);//name进程名 time进程运行时间
+public:
+	//将进程队列中的进程拉取到一级队列中，并初始化三个队列的时间片
+	duojifankui(const process_list& L,int time_slice1, int time_slice2, int time_slice3);
+private:
+	//三个队列的时间片
+	int ts1, ts2, ts3;
+	//三个队列
+	vector<process> queue_1;
+	vector<process> queue_2;
+	vector<process> queue_3;
+	//进程运行函数和调度函数
+	void process_running(int ts, process& current_process);
+	void scheduling();
+
 };

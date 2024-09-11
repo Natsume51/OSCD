@@ -1,23 +1,72 @@
 #include <iostream>
+#include <string>
+#include "pch.h"
 #include "process.h"
 using namespace std;
 //process窃糞��
 
-void process::set_process_name(string pname)
-{
-	process_name = pname;
-}
 
-void process::set_process_serve_time(int ptime)
-{
-	serve_time = ptime;
-}
 
 process::process(string pname, int ptime)
 {
 	arrive_time = 0;
-	set_process_name(pname);
-	set_process_serve_time(ptime);
+	process_name = pname;
+	serve_time = ptime;
 	run_time = arrive_time;
+	finish_time = 0;
 }
 
+process::process(const process& P)
+{
+	arrive_time = P.arrive_time;
+	serve_time = P.serve_time;
+	process_name = P.process_name;
+	run_time = P.run_time;
+	finish_time = P.finish_time;
+}
+void process::Modify_Run_Time(int newTime)
+{
+	run_time = newTime;
+}
+
+void process::Modify_Finish_Time(int newTime)
+{
+	finish_time = newTime;
+}
+
+int process::get_arrive_time()
+{
+	return arrive_time;
+}
+int process::get_serve_time()
+{
+	return serve_time;
+}
+int process::get_run_time()
+{
+	return run_time;
+}
+int process::get_finish_time()
+{
+	return finish_time;
+}
+string process::get_process_name()
+{
+	return process_name;
+}
+
+//！！！！！！！！！！！！！！！！！！！！！！
+void process_list::push_process(process P)
+{
+	p_list.push_back(P);
+}
+
+int process_list::get_nums() const
+{
+	return (int)p_list.size();
+}
+
+vector<process> process_list::get_list() const
+{
+	return p_list;
+}
