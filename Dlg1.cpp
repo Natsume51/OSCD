@@ -8,6 +8,7 @@
 #include "Dlg1.h"
 #include "duoJiFanKui.h"
 #include <iostream>
+#include "process.h"
 // Dlg1 对话框
 
 IMPLEMENT_DYNAMIC(Dlg1, CDialogEx)
@@ -88,6 +89,7 @@ void Dlg1::TotalProgressStep(int n)
 }
 void Dlg1::OnBnClickedButton1()
 {
+	process newProcess(pName, pTime, pArrTime);
 	// TODO: 在此添加控件通知处理程序代码
 
 }
@@ -155,6 +157,42 @@ void Dlg1::OnBnClickedButton2()
 
 }
 
-void UpdateQueue1() {
-
+void Dlg1::UpdateQueue(process_list p,int queueNum)
+{
+	vector<process> pList = p.get_list();
+	if (queueNum == 0)
+	{
+		for (int i = 0; i < p.get_nums(); i++)
+		{
+			CString str;
+			str.Format(_T("%d"), pList[i].get_run_time());
+			m_list1.InsertItem(i, _T(""));
+			m_list1.SetItemText(i, 0, pList[i].get_process_name().c_str());
+			m_list1.SetItemText(i, 1, str);
+		}
+	}
+	else if (queueNum == 1)
+	{
+		for (int i = 0; i < p.get_nums(); i++)
+		{
+			CString str;
+			str.Format(_T("%d"), pList[i].get_run_time());
+			m_list2.InsertItem(i, _T(""));
+			m_list2.SetItemText(i, 0, pList[i].get_process_name().c_str());
+			m_list2.SetItemText(i, 1, str);
+		}
+	}
+	else if (queueNum == 2)
+	{
+		for (int i = 0; i < p.get_nums(); i++)
+		{
+			CString str;
+			str.Format(_T("%d"), pList[i].get_run_time());
+			m_list3.InsertItem(i, _T(""));
+			m_list3.SetItemText(i, 0, pList[i].get_process_name().c_str());
+			m_list3.SetItemText(i, 1, str);
+		}
+	}
+	else
+		throw std::invalid_argument("queueNum should be 0,1 or 2");
 }

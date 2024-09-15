@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
-
+#include "process.h"
 
 // Dlg3 对话框
 
@@ -24,4 +24,15 @@ protected:
 public:
 	virtual BOOL OnInitDialog();
 	CListCtrl m_list1;
+	int pTime;
+	std::string pName;
+	int pArrTime;
+	void UpdateQueue(process_list p);
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnEnChangeEdit1();
+	afx_msg void OnEnChangeEdit2();
+	CEdit m_edit1;
+	CEdit m_edit2;
+	CEdit m_edit3;
+	afx_msg void OnEnChangeEdit3();
 };

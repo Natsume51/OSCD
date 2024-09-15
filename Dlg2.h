@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include <string>
-
+#include "process.h"
 // Dlg2 对话框
 
 class Dlg2 : public CDialogEx
@@ -36,4 +36,5 @@ public:
 	afx_msg void OnEnChangeEdit1();
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnEnChangeEdit3();
+	void UpdateQueue(process_list p);
 };

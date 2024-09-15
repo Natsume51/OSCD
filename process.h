@@ -7,6 +7,9 @@ class process
 public:
 	//创建进程时需输入进程名和服务时间
 	process(string pname, int ptime);
+	//----添加输入到达时间
+	process(string pname, int ptime, int pArrTime);
+
 	process(const process& P);
 	//获取进程各种信息的接口
 	int get_arrive_time();

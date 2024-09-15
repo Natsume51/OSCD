@@ -5,7 +5,7 @@
 #include "MFCApplication1.h"
 #include "afxdialogex.h"
 #include "Dlg2.h"
-
+#include "process.h"
 
 // Dlg2 对话框
 
@@ -88,6 +88,7 @@ void Dlg2::OnEnChangeEdit1()
 void Dlg2::OnBnClickedButton1()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	process newProcess(pName, pTime, pArrTime);
 }
 
 
@@ -102,4 +103,17 @@ void Dlg2::OnEnChangeEdit3()
 	CString arrTime;
 	m_edit2.GetWindowTextA(arrTime);
 	pArrTime = atoi(arrTime);
+}
+
+void Dlg2::UpdateQueue(process_list p)
+{
+	vector<process> pList = p.get_list();
+	for (int i = 0; i < p.get_nums(); i++)
+	{
+		CString str;
+		str.Format(_T("%d"), pList[i].get_run_time());
+		m_list1.InsertItem(i, _T(""));
+		m_list1.SetItemText(i, 0, pList[i].get_process_name().c_str());
+		m_list1.SetItemText(i, 1, str);
+	}
 }

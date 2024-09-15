@@ -43,6 +43,7 @@ public:
 	CProgressCtrl m_TotalProCtrl;
 	CEdit m_edit3;
 	afx_msg void OnEnChangeEdit3();
-
+	//更新进程列表信息,queueNum指定需更新的列表编号
+	void UpdateQueue(process_list p,int queueNum);
 	afx_msg void OnBnClickedButton2();
 };
