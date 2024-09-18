@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -13,7 +14,7 @@ public:
 	process(const process& P);
 	//获取进程各种信息的接口
 	int get_arrive_time();
-	int get_serve_time();
+	int get_serve_time() const;
 	int get_run_time();
 	int get_finish_time();
 	string get_process_name();
@@ -32,6 +33,7 @@ private:
 class process_list
 {
 public:
+	int get_times() const;
 	//将一个进程放入队列中
 	void push_process(process);
 	//获取进程数量

@@ -36,5 +36,5 @@ public:
 	afx_msg void OnEnChangeEdit1();
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnEnChangeEdit3();
-	void UpdateQueue(process_list p);
+	void UpdateQueue(vector<process> p);
 };

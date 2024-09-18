@@ -105,10 +105,9 @@ void Dlg2::OnEnChangeEdit3()
 	pArrTime = atoi(arrTime);
 }
 
-void Dlg2::UpdateQueue(process_list p)
+void Dlg2:: UpdateQueue(vector<process> pList)
 {
-	vector<process> pList = p.get_list();
-	for (int i = 0; i < p.get_nums(); i++)
+	for (int i = 0; i < pList.size(); i++)
 	{
 		CString str;
 		str.Format(_T("%d"), pList[i].get_run_time());

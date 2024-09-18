@@ -46,7 +46,7 @@ int process::get_arrive_time()
 {
 	return arrive_time;
 }
-int process::get_serve_time()
+int process::get_serve_time() const
 {
 	return serve_time;
 }
@@ -77,4 +77,12 @@ int process_list::get_nums() const
 vector<process> process_list::get_list() const
 {
 	return p_list;
+}
+
+int process_list::get_times() const{
+	int sum = 0;
+	for (int i = 0; i < get_nums(); i++) {
+		sum += p_list[i].get_serve_time();
+	}
+	return sum;
 }

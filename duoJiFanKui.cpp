@@ -1,11 +1,24 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <windows.h>
 #include "process.h"
 #include "pch.h"
 #include "duoJiFanKui.h"
+#include "MFCApplication1Dlg.h"
+#include "Dlg1.h"
 using namespace std;
+
+duojifankui::duojifankui(Dlg1* dlg,process_list& L, int time_slice1, int time_slice2, int time_slice3)
+{
+	Dlg = dlg;
+	current_time = 0;
+	ts1 = time_slice1;
+	ts2 = time_slice2;
+	ts3 = time_slice3;
+	auto listp = L.get_list();
+	queue_1.assign(listp.begin(), listp.end());
+	totalTime = L.get_times();
+}
 //将进程队列中的进程拉取到一级队列中，并初始化三个队列的时间片
 duojifankui::duojifankui(const process_list& L,int time_slice1, int time_slice2, int time_slice3)
 {
@@ -13,7 +26,9 @@ duojifankui::duojifankui(const process_list& L,int time_slice1, int time_slice2,
 	ts1 = time_slice1;
 	ts2 = time_slice2;
 	ts3 = time_slice3;
-	queue_1.assign(L.get_list().begin(), L.get_list().end());
+	auto listp = L.get_list();
+	queue_1.assign(listp.begin(), listp.end());
+	totalTime = L.get_times();
 }
 //进程运行函数
 void duojifankui::process_running(int ts, process& current_process)
@@ -28,7 +43,7 @@ void duojifankui::process_running(int ts, process& current_process)
 		current_process.Modify_Finish_Time(current_time);
 	}
 	//————————————————————————————————>>使用sleep函数模拟进程实际运行时间<<———————————————————————————————————————————
-	Sleep(ts * 1000);
+	//Sleep(ts * 1000);
 }
 
 //队列处理过程：
@@ -42,14 +57,20 @@ void duojifankui::queue_processing(vector<process>& L1,vector<process>&L2, int t
 	for (int i = 0; i < num; i++)
 	{
 		process_running(ts, L1.at(0));
-		if (L1.at(0).get_finish_time())
+		if (!(L1.at(0).get_finish_time()))//1
 		{
 			finish_queue.push_back(L1.at(0));
 			L1.erase(L1.begin());
 		}
-		L2.push_back(L1.at(0));
-		L1.erase(L1.begin());
-
+		else
+		{
+			L2.push_back(L1.at(0));
+			L1.erase(L1.begin());
+		}
+		Dlg->UpdateQueue(queue_1, 0);
+		Dlg->UpdateQueue(queue_2, 1);
+		Dlg->UpdateQueue(queue_3, 2);
+		Dlg->TotalProgressStep(current_time / totalTime - Dlg->m_TotalProCtrl.GetPos());
 		//每个进程运行结束后检测有无新进程到达
 		if (queue_idx != 1 && !queue_1.empty())
 		{
@@ -79,5 +100,6 @@ void duojifankui::scheduling()
 		{
 			queue_processing(queue_3, queue_3, ts3, 3);
 		}
+
 	}
 }

@@ -41,4 +41,3 @@ public:
 	int cursel=0;
 	afx_msg void OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult);
 };
-

@@ -1,7 +1,5 @@
 ﻿// Dlg1.cpp: 实现文件
-//
-//void Dlg1::ProgressStep(int n)		当前进程进度条前进n%
-//void Dlg1::TotalProgressStep(int n)	总进度条前进n%
+
 #include "pch.h"
 #include "MFCApplication1.h"
 #include "afxdialogex.h"
@@ -9,14 +7,15 @@
 #include "duoJiFanKui.h"
 #include <iostream>
 #include "process.h"
-// Dlg1 对话框
+#define finish_a_time_slice (WM_USER + 1)
 
+// Dlg1 对话框
 IMPLEMENT_DYNAMIC(Dlg1, CDialogEx)
 
 Dlg1::Dlg1(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_DIALOG1, pParent)
 {
-
+	;
 }
 
 Dlg1::~Dlg1()
@@ -31,7 +30,6 @@ void Dlg1::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST5, m_list3);
 	DDX_Control(pDX, IDC_EDIT1, m_edit1);
 	DDX_Control(pDX, IDC_EDIT2, m_edit2);
-	DDX_Control(pDX, IDC_PROGRESS1, m_ProCtrl);
 	DDX_Control(pDX, IDC_PROGRESS2, m_TotalProCtrl);
 	DDX_Control(pDX, IDC_EDIT3, m_edit3);
 }
@@ -44,6 +42,7 @@ BEGIN_MESSAGE_MAP(Dlg1, CDialogEx)
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST5, &Dlg1::OnLvnItemchangedList5)
 	ON_EN_CHANGE(IDC_EDIT3, &Dlg1::OnEnChangeEdit3)
 	ON_BN_CLICKED(IDC_BUTTON2, &Dlg1::OnBnClickedButton2)
+//	ON_MESSAGE(finish_a_time_slice, &Dlg1::OnFinishATimeSlice)
 END_MESSAGE_MAP()
 
 
@@ -73,25 +72,22 @@ BOOL Dlg1::OnInitDialog()
 	m_list3.SetExtendedStyle(dwStyle);
 	m_list3.InsertColumn(0, "进程名", LVCFMT_LEFT, 100);
 	m_list3.InsertColumn(1, "剩余时间", LVCFMT_LEFT, 100);
-	m_ProCtrl.SetRange(0, 100);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
 
-void Dlg1::ProgressStep(int n)
-{
-	m_ProCtrl.OffsetPos(n);
-}
 void Dlg1::TotalProgressStep(int n)
 {
 	m_TotalProCtrl.OffsetPos(n);
 }
+
 void Dlg1::OnBnClickedButton1()
 {
 	process newProcess(pName, pTime, pArrTime);
+	pList.push_process(newProcess);
+	UpdateQueue(pList.get_list(), 0);
 	// TODO: 在此添加控件通知处理程序代码
-
 }
 
 
@@ -149,20 +145,19 @@ void Dlg1::OnEnChangeEdit3()
 }
 
 
-
-
 void Dlg1::OnBnClickedButton2()
 {
+	duojifankui djfk(this, pList, 1, 2, 4);
+	djfk.scheduling();
 	// TODO: 在此添加控件通知处理程序代码
-
 }
 
-void Dlg1::UpdateQueue(process_list p,int queueNum)
+void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
 {
-	vector<process> pList = p.get_list();
 	if (queueNum == 0)
 	{
-		for (int i = 0; i < p.get_nums(); i++)
+		m_list1.DeleteAllItems();
+		for (int i = 0; i < pList.size(); i++)
 		{
 			CString str;
 			str.Format(_T("%d"), pList[i].get_run_time());
@@ -173,7 +168,8 @@ void Dlg1::UpdateQueue(process_list p,int queueNum)
 	}
 	else if (queueNum == 1)
 	{
-		for (int i = 0; i < p.get_nums(); i++)
+		m_list2.DeleteAllItems();
+		for (int i = 0; i < pList.size(); i++)
 		{
 			CString str;
 			str.Format(_T("%d"), pList[i].get_run_time());
@@ -184,7 +180,8 @@ void Dlg1::UpdateQueue(process_list p,int queueNum)
 	}
 	else if (queueNum == 2)
 	{
-		for (int i = 0; i < p.get_nums(); i++)
+		m_list3.DeleteAllItems();
+		for (int i = 0; i < pList.size(); i++)
 		{
 			CString str;
 			str.Format(_T("%d"), pList[i].get_run_time());

@@ -8,6 +8,8 @@
 #include "MFCApplication1Dlg.h"
 #include "afxdialogex.h"
 #include "Dlg1.h"
+#include "Dlg2.h"
+#include "Dlg3.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -110,7 +112,8 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	m_dlg2.Create(IDD_DIALOG2, &m_TabCtrl);
 	m_dlg3.Create(IDD_DIALOG3, &m_TabCtrl);
 	m_dlg1.ShowWindow(TRUE);
-	//m_dlg2.ShowWindow(FALSE);
+	m_dlg2.ShowWindow(FALSE);
+	m_dlg3.ShowWindow(FALSE);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
