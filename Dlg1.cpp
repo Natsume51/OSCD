@@ -32,6 +32,7 @@ void Dlg1::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EDIT2, m_edit2);
 	DDX_Control(pDX, IDC_PROGRESS2, m_TotalProCtrl);
 	DDX_Control(pDX, IDC_EDIT3, m_edit3);
+	DDX_Control(pDX, IDC_LIST1, m_list_all);
 }
 
 
@@ -54,7 +55,13 @@ BOOL Dlg1::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// TODO:  在此添加额外的初始化
-	DWORD dwStyle = m_list1.GetExtendedStyle();
+	DWORD dwStyle = m_list_all.GetExtendedStyle();
+	dwStyle |= LVS_EX_FULLROWSELECT;
+	dwStyle |= LVS_EX_GRIDLINES;
+	m_list_all.SetExtendedStyle(dwStyle);
+	m_list_all.InsertColumn(0, "进程名", LVCFMT_LEFT, 100);
+	m_list_all.InsertColumn(1, "剩余时间", LVCFMT_LEFT, 100);
+	dwStyle = m_list1.GetExtendedStyle();
 	dwStyle |= LVS_EX_FULLROWSELECT;
 	dwStyle |= LVS_EX_GRIDLINES;
 	m_list1.SetExtendedStyle(dwStyle);
@@ -86,7 +93,7 @@ void Dlg1::OnBnClickedButton1()
 {
 	process newProcess(pName, pTime, pArrTime);
 	pList.push_process(newProcess);
-	UpdateQueue(pList.get_list(), 0);
+	UpdateQueue(pList.get_list(), 3);
 	// TODO: 在此添加控件通知处理程序代码
 }
 
@@ -128,9 +135,6 @@ void Dlg1::OnLvnItemchangedList5(NMHDR* pNMHDR, LRESULT* pResult)
 }
 
 
-
-
-
 void Dlg1::OnEnChangeEdit3()
 {
 	// TODO:  如果该控件是 RICHEDIT 控件，它将不
@@ -140,8 +144,9 @@ void Dlg1::OnEnChangeEdit3()
 
 	// TODO:  在此添加控件通知处理程序代码
 	CString arrTime;
-	m_edit1.GetWindowTextA(arrTime);
+	m_edit3.GetWindowText(arrTime);
 	pArrTime = atoi(arrTime);
+	;
 }
 
 
@@ -149,7 +154,7 @@ void Dlg1::OnBnClickedButton2()
 {
 	duojifankui djfk(this, pList, 1, 2, 4);
 	djfk.scheduling();
-	// TODO: 在此添加控件通知处理程序代码
+	
 }
 
 void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
@@ -188,6 +193,18 @@ void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
 			m_list3.InsertItem(i, _T(""));
 			m_list3.SetItemText(i, 0, pList[i].get_process_name().c_str());
 			m_list3.SetItemText(i, 1, str);
+		}
+	}
+	else if (queueNum == 3)
+	{
+		m_list_all.DeleteAllItems();
+		for (int i = 0; i < pList.size(); i++)
+		{
+			CString str;
+			str.Format(_T("%d"), pList[i].get_run_time());
+			m_list_all.InsertItem(i, _T(""));
+			m_list_all.SetItemText(i, 0, pList[i].get_process_name().c_str());
+			m_list_all.SetItemText(i, 1, str);
 		}
 	}
 	else

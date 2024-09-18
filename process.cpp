@@ -12,7 +12,7 @@ process::process(string pname, int ptime)
 	arrive_time = 0;
 	process_name = pname;
 	serve_time = ptime;
-	run_time = arrive_time;
+	run_time = serve_time;
 	finish_time = 0;
 }
 
@@ -21,7 +21,7 @@ process::process(string pname, int ptime, int pArrTime)
 	arrive_time = pArrTime;
 	process_name = pname;
 	serve_time = ptime;
-	run_time = arrive_time;
+	run_time = serve_time;
 	finish_time = 0;
 }
 process::process(const process& P)

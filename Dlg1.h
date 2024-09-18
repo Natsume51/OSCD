@@ -46,4 +46,5 @@ public:
 	void UpdateQueue(vector<process> p,int queueNum);
 	afx_msg void OnBnClickedButton2();
 	process_list pList;
+	CListCtrl m_list_all;
 };

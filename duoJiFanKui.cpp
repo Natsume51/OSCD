@@ -34,7 +34,7 @@ duojifankui::duojifankui(const process_list& L,int time_slice1, int time_slice2,
 void duojifankui::process_running(int ts, process& current_process)
 {
 	//修改当前时间
-	current_time += ts;
+	current_time += ts;//todo 逻辑问题：进程可能在时间片未结束时完成运行
 	//修改进程数据
 	int run_time = current_process.get_run_time() - ts;
 	current_process.Modify_Run_Time(run_time);
@@ -57,7 +57,7 @@ void duojifankui::queue_processing(vector<process>& L1,vector<process>&L2, int t
 	for (int i = 0; i < num; i++)
 	{
 		process_running(ts, L1.at(0));
-		if (!(L1.at(0).get_finish_time()))//1
+		if (L1.at(0).get_finish_time())//1
 		{
 			finish_queue.push_back(L1.at(0));
 			L1.erase(L1.begin());
