@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string>
-#include "pch.h"
 #include "process.h"
 using namespace std;
 //process¿‡ µœ÷
@@ -69,4 +66,22 @@ int process_list::get_nums() const
 vector<process> process_list::get_list() const
 {
 	return p_list;
+}
+
+bool cmp(process x, process y) 
+{
+	return x.get_run_time() < y.get_run_time();
+}
+
+void process_list::sort_list_runtime()
+{
+	sort(p_list.begin(), p_list.end(), cmp);
+}
+
+int process_list::get_times() {
+	int sum = 0;
+	for (int i = 0; i < num; i++) {
+		sum += p_list[i].get_serve_time();
+	}
+	return sum;
 }

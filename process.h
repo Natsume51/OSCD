@@ -1,5 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include "pch.h"
+#include <algorithm>
+#include <numeric>
+#define num 10
 using namespace std;
 //process类声明
 class process
@@ -35,6 +40,16 @@ public:
 	int get_nums() const;
 	//获取进程队列
 	vector<process> get_list() const;
+	//进程队列排序（按服务时间）
+	void sort_list_runtime();
+	//获取总服务时间
+	int get_times();
 private:
 	vector <process> p_list;
 };
+
+//实例化总队列，所有算法使用时复制使用
+process_list P_List;
+
+//TODO: 创建新进程
+//TODO: process_list类的构造函数 
