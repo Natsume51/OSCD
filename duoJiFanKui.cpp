@@ -86,6 +86,7 @@ void duojifankui::scheduling()
 	//检查队列1，若队列1空则检查队列2，最后检查队列3
 	//若遇到队列非空，则运行该队列的第一个进程
 	//所有进程运行完毕后结束调度算法
+	//todo：开始运行时，没有检查到达时间是否是0，导致即使进程到达时间不为0，也是从current_time=0时开始计算
 	while (!(queue_1.empty() && queue_2.empty() && queue_3.empty()))
 	{
 		if (!queue_1.empty())
