@@ -7,6 +7,8 @@ class duojifankui
 public:
 	//将进程队列中的进程拉取到一级队列中，并初始化三个队列的时间片
 	duojifankui(const process_list& L,int time_slice1, int time_slice2, int time_slice3);
+	//调度过程函数
+	void scheduling();
 private:
 	//三个队列的时间片
 	int ts1, ts2, ts3;
@@ -17,9 +19,7 @@ private:
 	vector<process> queue_2;
 	vector<process> queue_3;
 	vector<process> finish_queue;
-	//进程运行函数和调度函数
+	//进程运行函数和队列内过程函数
 	void process_running(int ts, process& current_process);
-	void queue_processing(vector<process>& L1, vector<process>& L2, int ts);
-	void scheduling();
-
+	void queue_processing(vector<process>& L1, vector<process>& L2, int ts, int queue_idx);
 };
