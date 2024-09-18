@@ -1,7 +1,9 @@
 ﻿  Dlg1.cpp
   duoJiFanKui.cpp
-  process.cpp
-D:\VisualStudioProject\OSCD\duoJiFanKui.cpp(21,1): error C2143: 语法错误: 缺少“;”(在“}”的前面)
+  正在生成代码...
+D:\VisualStudioProject\OSCD\duoJiFanKui.cpp(31,2): error C3861: “sleep”: 找不到标识符
   (编译源文件“/duoJiFanKui.cpp”)
   
-  正在生成代码...
+D:\VisualStudioProject\OSCD\duoJiFanKui.cpp(41,10): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  (编译源文件“/duoJiFanKui.cpp”)
+  
