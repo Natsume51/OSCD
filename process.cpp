@@ -2,8 +2,6 @@
 using namespace std;
 //process¿‡ µœ÷
 
-
-
 process::process(string pname, int ptime)
 {
 	arrive_time = 0;
@@ -80,7 +78,7 @@ void process_list::sort_list_runtime()
 
 int process_list::get_times() {
 	int sum = 0;
-	for (int i = 0; i < num; i++) {
+	for (int i = 0; i < get_nums(); i++) {
 		sum += p_list[i].get_serve_time();
 	}
 	return sum;

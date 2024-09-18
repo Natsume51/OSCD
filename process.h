@@ -4,7 +4,6 @@
 #include "pch.h"
 #include <algorithm>
 #include <numeric>
-#define num 10
 using namespace std;
 //process类声明
 class process
@@ -50,6 +49,3 @@ private:
 
 //实例化总队列，所有算法使用时复制使用
 process_list P_List;
-
-//TODO: 创建新进程
-//TODO: process_list类的构造函数 
