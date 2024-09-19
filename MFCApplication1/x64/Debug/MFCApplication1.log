@@ -1,9 +1,2 @@
-﻿  Dlg1.cpp
-  duoJiFanKui.cpp
-  正在生成代码...
-D:\VisualStudioProject\OSCD\duoJiFanKui.cpp(31,2): error C3861: “sleep”: 找不到标识符
-  (编译源文件“/duoJiFanKui.cpp”)
-  
-D:\VisualStudioProject\OSCD\duoJiFanKui.cpp(41,10): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-  (编译源文件“/duoJiFanKui.cpp”)
-  
+﻿  pch.cpp
+/pch.cpp(1,1): error C1083: 无法打开源文件: “pch.cpp”: No such file or directory
