@@ -185,7 +185,7 @@
   <ItemGroup>
     <ClInclude Include="Dlg1.h" />
     <ClInclude Include="Dlg2.h" />
-    <ClInclude Include="Dlg3.h" />
+    <ClInclude Include="duanZuoYe.h" />
     <ClInclude Include="duoJiFanKui.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MFCApplication1.h" />
@@ -198,7 +198,7 @@
   <ItemGroup>
     <ClCompile Include="Dlg1.cpp" />
     <ClCompile Include="Dlg2.cpp" />
-    <ClCompile Include="Dlg3.cpp" />
+    <ClCompile Include="duanZuoYe.cpp" />
     <ClCompile Include="duoJiFanKui.cpp" />
     <ClCompile Include="MFCApplication1.cpp" />
     <ClCompile Include="MFCApplication1Dlg.cpp" />
