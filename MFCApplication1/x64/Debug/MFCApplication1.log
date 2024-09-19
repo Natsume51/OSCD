@@ -1,2 +1,9 @@
-﻿  pch.cpp
-/pch.cpp(1,1): error C1083: 无法打开源文件: “pch.cpp”: No such file or directory
+﻿  Dlg3.cpp
+Dlg2.obj : error LNK2005: "class process_list P_List" (?P_List@@3Vprocess_list@@A) 已经在 Dlg1.obj 中定义
+Dlg3.obj : error LNK2005: "class process_list P_List" (?P_List@@3Vprocess_list@@A) 已经在 Dlg1.obj 中定义
+duanZuoYe.obj : error LNK2005: "class process_list P_List" (?P_List@@3Vprocess_list@@A) 已经在 Dlg1.obj 中定义
+duoJiFanKui.obj : error LNK2005: "class process_list P_List" (?P_List@@3Vprocess_list@@A) 已经在 Dlg1.obj 中定义
+MFCApplication1.obj : error LNK2005: "class process_list P_List" (?P_List@@3Vprocess_list@@A) 已经在 Dlg1.obj 中定义
+MFCApplication1Dlg.obj : error LNK2005: "class process_list P_List" (?P_List@@3Vprocess_list@@A) 已经在 Dlg1.obj 中定义
+process.obj : error LNK2005: "class process_list P_List" (?P_List@@3Vprocess_list@@A) 已经在 Dlg1.obj 中定义
+C:\Users\Natsu\source\repos\MFCApplication1\MFCApplication1\x64\Debug\MFCApplication1.exe : fatal error LNK1169: 找到一个或多个多重定义的符号

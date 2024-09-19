@@ -79,7 +79,17 @@ vector<process> process_list::get_list() const
 	return p_list;
 }
 
-int process_list::get_times() const{
+bool cmp(process x, process y)
+{
+	return x.get_run_time() < y.get_run_time();
+}
+
+void process_list::sort_list_runtime()
+{
+	sort(p_list.begin(), p_list.end(), cmp);
+}
+
+int process_list::get_times(){
 	int sum = 0;
 	for (int i = 0; i < get_nums(); i++) {
 		sum += p_list[i].get_serve_time();

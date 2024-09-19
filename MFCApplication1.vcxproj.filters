@@ -45,7 +45,13 @@
     <ClInclude Include="process.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Dlg2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="duanZuoYe.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Dlg3.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,7 +77,13 @@
     <ClCompile Include="process.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Dlg2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="duanZuoYe.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dlg3.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

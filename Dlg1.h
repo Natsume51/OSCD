@@ -47,4 +47,5 @@ public:
 	afx_msg void OnBnClickedButton2();
 	process_list pList;
 	CListCtrl m_list_all;
+	CListCtrl m_finish_list;
 };

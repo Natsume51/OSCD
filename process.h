@@ -37,7 +37,6 @@ private:
 class process_list
 {
 public:
-	int get_times() const;
 	//将一个进程放入队列中
 	void push_process(process);
 	//获取进程数量
@@ -51,6 +50,3 @@ public:
 private:
 	vector <process> p_list;
 };
-
-//实例化总队列，所有算法使用时复制使用
-process_list P_List;

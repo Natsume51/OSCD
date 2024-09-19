@@ -8,7 +8,7 @@ class duojifankui
 public:
 	duojifankui(Dlg1* dlg, process_list& L, int time_slice1, int time_slice2, int time_slice3);
 	//将进程队列中的进程拉取到一级队列中，并初始化三个队列的时间片
-	duojifankui(const process_list& L,int time_slice1, int time_slice2, int time_slice3);
+	duojifankui(process_list& L,int time_slice1, int time_slice2, int time_slice3);
 	//调度过程函数
 	void scheduling();
 private:

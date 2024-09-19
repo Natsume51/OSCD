@@ -1,5 +1,4 @@
 ﻿// Dlg1.cpp: 实现文件
-
 #include "pch.h"
 #include "MFCApplication1.h"
 #include "afxdialogex.h"
@@ -33,6 +32,7 @@ void Dlg1::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_PROGRESS2, m_TotalProCtrl);
 	DDX_Control(pDX, IDC_EDIT3, m_edit3);
 	DDX_Control(pDX, IDC_LIST1, m_list_all);
+	DDX_Control(pDX, IDC_LIST2, m_finish_list);
 }
 
 
@@ -79,6 +79,10 @@ BOOL Dlg1::OnInitDialog()
 	m_list3.SetExtendedStyle(dwStyle);
 	m_list3.InsertColumn(0, "进程名", LVCFMT_LEFT, 100);
 	m_list3.InsertColumn(1, "剩余时间", LVCFMT_LEFT, 100);
+	dwStyle = m_finish_list.GetExtendedStyle();
+	dwStyle |= LVS_EX_FULLROWSELECT;
+	dwStyle |= LVS_EX_GRIDLINES;
+	m_finish_list.SetExtendedStyle(dwStyle);
 
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
@@ -205,6 +209,15 @@ void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
 			m_list_all.InsertItem(i, _T(""));
 			m_list_all.SetItemText(i, 0, pList[i].get_process_name().c_str());
 			m_list_all.SetItemText(i, 1, str);
+		}
+	}
+	else if (queueNum == 4)
+	{
+		m_finish_list.DeleteAllItems();
+		for (int i = 0; i < pList.size(); i++)
+		{
+			m_finish_list.InsertItem(i, _T(""));
+			m_finish_list.SetItemText(i, 0, pList[i].get_process_name().c_str());
 		}
 	}
 	else

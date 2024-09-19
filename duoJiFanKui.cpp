@@ -20,7 +20,7 @@ duojifankui::duojifankui(Dlg1* dlg,process_list& L, int time_slice1, int time_sl
 	totalTime = L.get_times();
 }
 //将进程队列中的进程拉取到一级队列中，并初始化三个队列的时间片
-duojifankui::duojifankui(const process_list& L,int time_slice1, int time_slice2, int time_slice3)
+duojifankui::duojifankui(process_list& L,int time_slice1, int time_slice2, int time_slice3)
 {
 	current_time = 0;
 	ts1 = time_slice1;
@@ -70,7 +70,8 @@ void duojifankui::queue_processing(vector<process>& L1,vector<process>&L2, int t
 		Dlg->UpdateQueue(queue_1, 0);
 		Dlg->UpdateQueue(queue_2, 1);
 		Dlg->UpdateQueue(queue_3, 2);
-		Dlg->TotalProgressStep(current_time / totalTime - Dlg->m_TotalProCtrl.GetPos());
+		Dlg->UpdateQueue(finish_queue, 4);
+		Dlg->TotalProgressStep((current_time / totalTime - Dlg->m_TotalProCtrl.GetPos())*100);
 		//每个进程运行结束后检测有无新进程到达
 		if (queue_idx != 1 && !queue_1.empty())
 		{
