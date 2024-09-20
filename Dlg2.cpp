@@ -6,6 +6,7 @@
 #include "afxdialogex.h"
 #include "Dlg2.h"
 #include "process.h"
+#include "duanZuoYe.h"
 
 // Dlg2 对话框
 
@@ -35,6 +36,7 @@ BEGIN_MESSAGE_MAP(Dlg2, CDialogEx)
 	ON_EN_CHANGE(IDC_EDIT1, &Dlg2::OnEnChangeEdit1)
 	ON_BN_CLICKED(IDC_BUTTON1, &Dlg2::OnBnClickedButton1)
 	ON_EN_CHANGE(IDC_EDIT3, &Dlg2::OnEnChangeEdit3)
+	ON_BN_CLICKED(IDC_BUTTON2, &Dlg2::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 
@@ -89,6 +91,8 @@ void Dlg2::OnBnClickedButton1()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	process newProcess(pName, pTime, pArrTime);
+	pList.push_process(newProcess);
+	UpdateQueue(pList.get_list());
 }
 
 
@@ -107,6 +111,7 @@ void Dlg2::OnEnChangeEdit3()
 
 void Dlg2:: UpdateQueue(vector<process> pList)
 {
+	m_list1.DeleteAllItems();
 	for (int i = 0; i < pList.size(); i++)
 	{
 		CString str;
@@ -115,4 +120,10 @@ void Dlg2:: UpdateQueue(vector<process> pList)
 		m_list1.SetItemText(i, 0, pList[i].get_process_name().c_str());
 		m_list1.SetItemText(i, 1, str);
 	}
+}
+
+void Dlg2::OnBnClickedButton2()
+{
+	duanzuoye dzy = duanzuoye(this, pList);
+	dzy.scheduling();
 }

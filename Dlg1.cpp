@@ -98,7 +98,6 @@ void Dlg1::OnBnClickedButton1()
 	process newProcess(pName, pTime, pArrTime);
 	pList.push_process(newProcess);
 	UpdateQueue(pList.get_list(), 3);
-	// TODO: 在此添加控件通知处理程序代码
 }
 
 

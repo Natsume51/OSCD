@@ -74,6 +74,11 @@ int process_list::get_nums() const
 	return (int)p_list.size();
 }
 
+void process_list::set_item(process p, int num)
+{
+	p_list[num] = p;
+}
+
 vector<process> process_list::get_list() const
 {
 	return p_list;

@@ -37,6 +37,7 @@ private:
 class process_list
 {
 public:
+	void set_item(process p, int num);
 	//将一个进程放入队列中
 	void push_process(process);
 	//获取进程数量
