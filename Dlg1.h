@@ -2,7 +2,7 @@
 #include "afxdialogex.h"
 #include <iostream>
 #include <vector>
-#include "process.h"
+#include "NProcess.h"
 // Dlg1 对话框
 
 class Dlg1 : public CDialogEx
@@ -38,7 +38,7 @@ public:
 	CEdit m_edit1;
 	CEdit m_edit2;
 	afx_msg void OnLvnItemchangedList5(NMHDR* pNMHDR, LRESULT* pResult);
-	void TotalProgressStep(int n);
+	void TotalProgressStepTo(int n);
 	CProgressCtrl m_TotalProCtrl;
 	CEdit m_edit3;
 	afx_msg void OnEnChangeEdit3();

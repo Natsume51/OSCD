@@ -1,7 +1,7 @@
 ﻿#pragma once
+#include "pch.h"
 #include "afxdialogex.h"
-#include "process.h"
-
+#include "MyProcess.h"
 // Dlg3 对话框
 
 class Dlg3 : public CDialogEx
@@ -27,7 +27,8 @@ public:
 	int pTime;
 	std::string pName;
 	int pArrTime;
-	void UpdateQueue(vector<process> p);
+	int pPriority;
+	void UpdateQueue(vector<MyProcess> p, int queueNum);
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnEnChangeEdit1();
 	afx_msg void OnEnChangeEdit2();
@@ -35,4 +36,8 @@ public:
 	CEdit m_edit2;
 	CEdit m_edit3;
 	afx_msg void OnEnChangeEdit3();
+	afx_msg void OnEnChangeEdit4();
+	vector<MyProcess> pList;
+	CListCtrl m_list_all;
+	afx_msg void OnBnClickedButton2();
 };

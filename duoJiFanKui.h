@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "process.h"
+#include "NProcess.h"
 #include "Dlg1.h"
 using namespace std;
 class duojifankui

@@ -39,10 +39,7 @@
     <ClInclude Include="duoJiFanKui.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="process.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="process.h">
+    <ClInclude Include="NProcess.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Dlg2.h">
@@ -52,6 +49,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Dlg3.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="priority_scheduling.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyProcess.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,10 +74,7 @@
     <ClCompile Include="duoJiFanKui.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="process.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="process.cpp">
+    <ClCompile Include="MyProcess.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Dlg2.cpp">
@@ -84,6 +84,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Dlg3.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="priority_scheduling.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

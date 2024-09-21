@@ -5,7 +5,7 @@
 #include "Dlg1.h"
 #include "duoJiFanKui.h"
 #include <iostream>
-#include "process.h"
+#include "NProcess.h"
 #define finish_a_time_slice (WM_USER + 1)
 
 // Dlg1 对话框
@@ -88,9 +88,9 @@ BOOL Dlg1::OnInitDialog()
 	// 异常: OCX 属性页应返回 FALSE
 }
 
-void Dlg1::TotalProgressStep(int n)
+void Dlg1::TotalProgressStepTo(int n)
 {
-	m_TotalProCtrl.OffsetPos(n);
+	m_TotalProCtrl.SetPos(n);
 }
 
 void Dlg1::OnBnClickedButton1()
@@ -172,6 +172,8 @@ void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
 			m_list1.InsertItem(i, _T(""));
 			m_list1.SetItemText(i, 0, pList[i].get_process_name().c_str());
 			m_list1.SetItemText(i, 1, str);
+			m_list1.RedrawItems(0, m_list1.GetItemCount() - 1);
+			m_list1.UpdateWindow();
 		}
 	}
 	else if (queueNum == 1)
@@ -184,6 +186,8 @@ void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
 			m_list2.InsertItem(i, _T(""));
 			m_list2.SetItemText(i, 0, pList[i].get_process_name().c_str());
 			m_list2.SetItemText(i, 1, str);
+			m_list2.RedrawItems(0, m_list1.GetItemCount() - 1);
+			m_list2.UpdateWindow();
 		}
 	}
 	else if (queueNum == 2)
@@ -196,6 +200,8 @@ void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
 			m_list3.InsertItem(i, _T(""));
 			m_list3.SetItemText(i, 0, pList[i].get_process_name().c_str());
 			m_list3.SetItemText(i, 1, str);
+			m_list3.RedrawItems(0, m_list1.GetItemCount() - 1);
+			m_list3.UpdateWindow();
 		}
 	}
 	else if (queueNum == 3)
@@ -208,6 +214,8 @@ void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
 			m_list_all.InsertItem(i, _T(""));
 			m_list_all.SetItemText(i, 0, pList[i].get_process_name().c_str());
 			m_list_all.SetItemText(i, 1, str);
+			m_list_all.RedrawItems(0, m_list1.GetItemCount() - 1);
+			m_list_all.UpdateWindow();
 		}
 	}
 	else if (queueNum == 4)
@@ -217,6 +225,8 @@ void Dlg1::UpdateQueue(vector<process> pList,int queueNum)
 		{
 			m_finish_list.InsertItem(i, _T(""));
 			m_finish_list.SetItemText(i, 0, pList[i].get_process_name().c_str());
+			m_finish_list.RedrawItems(0, m_list1.GetItemCount() - 1);
+			m_finish_list.UpdateWindow();
 		}
 	}
 	else

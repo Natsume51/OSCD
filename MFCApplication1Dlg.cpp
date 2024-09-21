@@ -106,8 +106,8 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 	m_TabCtrl.InsertItem(0, _T("多级反馈队列调度"));
-	m_TabCtrl.InsertItem(1, _T("优先级调度"));
-	m_TabCtrl.InsertItem(2, _T("短作业优先"));
+	m_TabCtrl.InsertItem(1, _T("短作业优先"));
+	m_TabCtrl.InsertItem(2, _T("优先级调度"));
 	m_dlg1.Create(IDD_DIALOG1, &m_TabCtrl);
 	m_dlg2.Create(IDD_DIALOG2, &m_TabCtrl);
 	m_dlg3.Create(IDD_DIALOG3, &m_TabCtrl);

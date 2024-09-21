@@ -5,7 +5,7 @@
 #include "MFCApplication1.h"
 #include "afxdialogex.h"
 #include "Dlg2.h"
-#include "process.h"
+#include "NProcess.h"
 #include "duanZuoYe.h"
 
 // Dlg2 对话框
@@ -28,6 +28,8 @@ void Dlg2::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_LIST1, m_list1);
 	DDX_Control(pDX, IDC_EDIT2, m_edit2);
 	DDX_Control(pDX, IDC_EDIT1, m_edit1);
+	DDX_Control(pDX, IDC_LIST2, m_list_all);
+	DDX_Control(pDX, IDC_EDIT3, m_edit3);
 }
 
 
@@ -54,6 +56,11 @@ BOOL Dlg2::OnInitDialog()
 	m_list1.SetExtendedStyle(dwStyle);
 	m_list1.InsertColumn(0, "进程名", LVCFMT_LEFT, 125);
 	m_list1.InsertColumn(1, "剩余时间", LVCFMT_LEFT, 125);
+	dwStyle |= LVS_EX_FULLROWSELECT;
+	dwStyle |= LVS_EX_GRIDLINES;
+	m_list_all.SetExtendedStyle(dwStyle);
+	m_list_all.InsertColumn(0, "进程名", LVCFMT_LEFT, 125);
+	m_list_all.InsertColumn(1, "剩余时间", LVCFMT_LEFT, 125);
 	return TRUE;  // return TRUE unless you set the focus to a control
 	// 异常: OCX 属性页应返回 FALSE
 }
@@ -92,7 +99,7 @@ void Dlg2::OnBnClickedButton1()
 	// TODO: 在此添加控件通知处理程序代码
 	process newProcess(pName, pTime, pArrTime);
 	pList.push_process(newProcess);
-	UpdateQueue(pList.get_list());
+	UpdateQueue(pList.get_list(),1);
 }
 
 
@@ -105,21 +112,42 @@ void Dlg2::OnEnChangeEdit3()
 
 	// TODO:  在此添加控件通知处理程序代码
 	CString arrTime;
-	m_edit2.GetWindowTextA(arrTime);
+	m_edit3.GetWindowTextA(arrTime);
 	pArrTime = atoi(arrTime);
 }
 
-void Dlg2:: UpdateQueue(vector<process> pList)
+void Dlg2:: UpdateQueue(vector<process> pList,int queueNum)
 {
-	m_list1.DeleteAllItems();
-	for (int i = 0; i < pList.size(); i++)
+	if (queueNum == 0)
 	{
-		CString str;
-		str.Format(_T("%d"), pList[i].get_run_time());
-		m_list1.InsertItem(i, _T(""));
-		m_list1.SetItemText(i, 0, pList[i].get_process_name().c_str());
-		m_list1.SetItemText(i, 1, str);
+		m_list1.DeleteAllItems();
+		for (int i = 0; i < pList.size(); i++)
+		{
+			CString str;
+			str.Format(_T("%d"), pList[i].get_run_time());
+			m_list1.InsertItem(i, _T(""));
+			m_list1.SetItemText(i, 0, pList[i].get_process_name().c_str());
+			m_list1.SetItemText(i, 1, str);
+			m_list1.RedrawItems(0, m_list1.GetItemCount() - 1);
+			m_list1.UpdateWindow();
+		}
 	}
+	else if (queueNum == 1)
+	{
+		m_list_all.DeleteAllItems();
+		for (int i = 0; i < pList.size(); i++)
+		{
+			CString str;
+			str.Format(_T("%d"), pList[i].get_run_time());
+			m_list_all.InsertItem(i, _T(""));
+			m_list_all.SetItemText(i, 0, pList[i].get_process_name().c_str());
+			m_list_all.SetItemText(i, 1, str);
+			m_list_all.RedrawItems(0, m_list_all.GetItemCount() - 1);
+			m_list_all.UpdateWindow();
+		}
+	}
+	else
+		throw std::invalid_argument("queueNum should be 0,1 or 2");
 }
 
 void Dlg2::OnBnClickedButton2()

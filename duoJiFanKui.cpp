@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "process.h"
+#include "NProcess.h"
 #include "pch.h"
 #include "duoJiFanKui.h"
 #include "MFCApplication1Dlg.h"
@@ -43,7 +43,7 @@ void duojifankui::process_running(int ts, process& current_process)
 		current_process.Modify_Finish_Time(current_time);
 	}
 	//————————————————————————————————>>使用sleep函数模拟进程实际运行时间<<———————————————————————————————————————————
-	//Sleep(ts * 1000);
+	Sleep(1000);
 }
 
 //队列处理过程：
@@ -53,12 +53,17 @@ void duojifankui::process_running(int ts, process& current_process)
 //若当前队列L1为第三级队列，则L2也是第三级队列
 void duojifankui::queue_processing(vector<process>& L1,vector<process>&L2, int ts, int queue_idx)
 {
+	Dlg->UpdateQueue(queue_1, 0);
+	Dlg->UpdateQueue(queue_2, 1);
+	Dlg->UpdateQueue(queue_3, 2);
+	Dlg->UpdateQueue(finish_queue, 4);
 	int num = L1.size();
 	for (int i = 0; i < num; i++)
 	{
 		process_running(ts, L1.at(0));
 		if (L1.at(0).get_finish_time())//1
 		{
+
 			finish_queue.push_back(L1.at(0));
 			L1.erase(L1.begin());
 		}
@@ -71,7 +76,7 @@ void duojifankui::queue_processing(vector<process>& L1,vector<process>&L2, int t
 		Dlg->UpdateQueue(queue_2, 1);
 		Dlg->UpdateQueue(queue_3, 2);
 		Dlg->UpdateQueue(finish_queue, 4);
-		Dlg->TotalProgressStep((current_time / totalTime - Dlg->m_TotalProCtrl.GetPos())*100);
+		Dlg->TotalProgressStepTo(((float)current_time / (float)totalTime)*100);
 		//每个进程运行结束后检测有无新进程到达
 		if (queue_idx != 1 && !queue_1.empty())
 		{
